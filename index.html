@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jorge Tadillo Martínez | Military Experience</title>
+  
+  <style>
+    :root {
+      /* Enhanced Color Palette */
+      --bg-navy-dark: #050B14;
+      --bg-navy-light: #0A192F;
+      --bg-navy-faded: #112240;
+      
+      --card-ivory: #FBFBF8;
+      
+      --gold-matte: #C5A059;
+      --gold-bright: #F2C94C;
+      --gold-glow: rgba(242, 201, 76, 0.4);
+      
+      --text-ivory: #E6F1FF;
+      --text-silver: #8892B0;
+      --text-navy: #0A192F;
+      --text-navy-light: #1A2845;
+      
+      /* Dynamic Gradients */
+      --nacre-bg: radial-gradient(circle at 50% 0%, var(--bg-navy-light) 0%, var(--bg-navy-dark) 80%);
+      --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+      
+      /* Typography */
+      --font-serif: 'Playfair Display', 'Didot', 'Bodoni MT', 'Georgia', serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg-navy-dark);
+      background-image: var(--nacre-bg);
+      color: var(--text-ivory);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 3rem 1.5rem;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-navy-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-matte);
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold-bright);
+    }
+
+    .dossier-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      border: var(--glass-border);
+      border-radius: 24px;
+      padding: 4rem;
+      background: rgba(10, 25, 47, 0.6);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 20px rgba(255,255,255,0.05);
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .dossier-container {
+        padding: 2rem 1.5rem;
+        border: none;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+      }
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      text-align: center;
+      margin-bottom: 4rem;
+      padding-bottom: 2rem;
+      color: var(--text-ivory);
+      letter-spacing: -0.02em;
+      position: relative;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+    }
+
+    h2 {
+      font-size: 2.2rem;
+      margin-top: 5rem;
+      margin-bottom: 2.5rem;
+      color: var(--gold-bright);
+      display: inline-block;
+      position: relative;
+    }
+
+    /* Animated underline for h2 */
+    h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      height: 2px;
+      width: 0;
+      background: var(--gold-bright);
+      transition: width 0.6s ease;
+    }
+    
+    .reveal.active h2::after {
+      width: 100%;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+      color: var(--text-silver);
+    }
+
+    strong {
+      color: var(--gold-bright);
+      font-weight: 600;
+      text-shadow: 0 0 10px rgba(242, 201, 76, 0.2);
+    }
+
+    .ivory-card {
+      background: var(--card-ivory);
+      border-radius: 16px;
+      padding: 3rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      color: var(--text-navy);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ivory-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 30px rgba(242, 201, 76, 0.1);
+    }
+
+    .ivory-card p {
+      color: var(--text-navy-light);
+      margin-bottom: 0;
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+
+    .ivory-card h3 {
+      color: var(--text-navy);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      font-weight: 600;
+      position: relative;
+    }
+
+    .ivory-card h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--gold-matte);
+      transition: width 0.3s ease;
+    }
+
+    .ivory-card:hover h3::after {
+      width: 100px;
+    }
+
+    /* REPLACING BULLETS WITH INTERACTIVE TEXT BOXES */
+    .ivory-card ul {
+      list-style: none;
+      margin-left: 0;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .ivory-card ul li {
+      background: #FFFFFF;
+      padding: 1.2rem 1.5rem;
+      border-radius: 12px;
+      color: var(--text-navy-light);
+      font-weight: 500;
+      border: 1px solid rgba(10, 25, 47, 0.05);
+      border-left: 4px solid var(--gold-matte);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Hover effect for bullet boxes */
+    .ivory-card ul li::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: var(--bg-navy-dark);
+      transition: width 0.4s ease;
+      z-index: -1;
+    }
+
+    .ivory-card ul li:hover {
+      transform: translateX(10px);
+      color: var(--text-ivory);
+      border-left-color: var(--gold-bright);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .ivory-card ul li:hover::before {
+      width: 100%;
+    }
+
+    /* Section 3 Principles - Interactive Floating Grid */
+    .principles-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .principles-list li {
+      background: rgba(17, 34, 64, 0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(197, 160, 89, 0.2);
+      border-radius: 16px;
+      padding: 2rem;
+      font-style: italic;
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--gold-matte);
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      cursor: default;
+    }
+
+    .principles-list li:hover {
+      transform: translateY(-10px) scale(1.05);
+      background: rgba(17, 34, 64, 0.95);
+      border-color: var(--gold-bright);
+      color: var(--gold-bright);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px var(--gold-glow);
+    }
+
+    .funnel-container {
+      margin: 5rem 0;
+      position: relative;
+    }
+
+    .funnel-container h3 {
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--text-silver);
+      font-family: var(--font-sans);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-size: 1.1rem;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .kpi-item {
+      background: rgba(17, 34, 64, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(10px);
+    }
+
+    .kpi-item:hover {
+      transform: translateY(-8px);
+      background: rgba(17, 34, 64, 0.8);
+      border-color: rgba(197, 160, 89, 0.4);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.4), 0 0 15px var(--gold-glow);
+    }
+
+    .kpi-item.highlight {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--gold-matte), var(--gold-bright));
+      border: none;
+      color: var(--bg-navy-dark);
+    }
+
+    .kpi-item.highlight:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 40px rgba(242, 201, 76, 0.3);
+    }
+
+    .kpi-item .label {
+      color: var(--text-silver);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .kpi-item.highlight .label, 
+    .kpi-item.highlight .sub {
+      color: rgba(10, 25, 47, 0.8);
+    }
+
+    .kpi-item .val {
+      color: var(--gold-bright);
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 1rem;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      text-shadow: 0 0 20px rgba(242, 201, 76, 0.2);
+    }
+
+    .kpi-item.highlight .val {
+      color: var(--bg-navy-dark);
+      text-shadow: none;
+    }
+
+    .kpi-item .sub {
+      color: var(--text-silver);
+      font-size: 0.95rem;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .grid-2-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .institutional-quote {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-style: italic;
+      text-align: center;
+      color: var(--text-ivory); /* CHANGED: Color from gold to white (ivory) */
+      margin: 6rem 0;
+      padding: 0 2rem;
+      line-height: 1.3;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.3); /* CHANGED: Glow to match white text */
+      position: relative;
+    }
+
+    /* REMOVED: Large background decorative quotes
+    .institutional-quote::before,
+    .institutional-quote::after {
+      content: '"';
+      color: rgba(242, 201, 76, 0.2);
+      font-size: 5rem;
+      position: absolute;
+      top: -2rem;
+    }
+    
+    .institutional-quote::before { left: 0; }
+    .institutional-quote::after { right: 0; }
+    */
+
+    .carousel-snap {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      margin-bottom: 3.5rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-matte) rgba(255, 255, 255, 0.05);
+      -webkit-overflow-scrolling: touch;
+      scroll-behavior: smooth;
+    }
+
+    .carousel-snap::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .carousel-snap::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+
+    .carousel-snap::-webkit-scrollbar-thumb {
+      background-color: var(--gold-matte);
+      border-radius: 10px;
+    }
+
+    .carousel-snap > figure {
+      scroll-snap-align: center;
+      flex: 0 0 85%;
+      margin: 0;
+      transition: transform 0.4s ease;
+    }
+
+    @media (min-width: 768px) {
+      .carousel-snap > figure {
+        flex: 0 0 calc(50% - 1rem);
+      }
+    }
+
+    .carousel-snap > figure:hover {
+      transform: scale(1.02);
+    }
+
+    figure {
+      margin: 0;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .carousel-snap figure {
+      margin-bottom: 0;
+    }
+
+    .img-placeholder {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: var(--bg-navy-faded);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed rgba(197, 160, 89, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .img-placeholder:hover {
+      border-color: var(--gold-bright);
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.5);
+    }
+
+    .img-placeholder::before {
+      content: attr(data-label);
+      color: var(--text-silver);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      position: absolute;
+      z-index: 1;
+      font-family: monospace;
+      background: rgba(5, 11, 20, 0.9);
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .img-placeholder:hover::before {
+      color: var(--gold-bright);
+      border-color: rgba(242, 201, 76, 0.5);
+      transform: scale(1.05);
+    }
+
+    .img-placeholder img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 2;
+      transition: transform 0.6s ease, opacity 0.3s ease;
+    }
+
+    .img-placeholder:hover img {
+      transform: scale(1.05);
+    }
+
+    .img-placeholder img[src=""], 
+    .img-placeholder img:not([src]) {
+      opacity: 0;
+    }
+
+    /* Scroll Animation Classes */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered delays for child elements */
+    .stagger-1 { transition-delay: 0.1s; }
+    .stagger-2 { transition-delay: 0.2s; }
+    .stagger-3 { transition-delay: 0.3s; }
+    .stagger-4 { transition-delay: 0.4s; }
+
+    /* Background Ambient Animation */
+    .ambient-light {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background: radial-gradient(circle at 15% 50%, rgba(242, 201, 76, 0.03), transparent 25%),
+                  radial-gradient(circle at 85% 30%, rgba(10, 25, 47, 0.5), transparent 25%);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Background effect layer -->
+  <div class="ambient-light"></div>
+
+  <div class="dossier-container">
+    
+    <header class="reveal active">
+      <h1>Jorge Tadillo Martínez | Military Experience</h1>
+    </header>
+
+    <section id="section-1" class="reveal">
+      <h2>1. What is the Heroica Escuela Naval Militar (HENM)?</h2>
+      
+      <div class="carousel-snap reveal stagger-1">
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_HENM_1]">
+            <img src="https://lh3.googleusercontent.com/d/1Lzoso2ahmW3DbOFwPLeV_bic7KZ9Xgif" alt="HENM" loading="lazy">
+          </div>
+        </figure>
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_HENM_2]">
+            <img src="https://lh3.googleusercontent.com/d/121GX67fLUKP7ytHuouHx3ZnrZmXpptWu" style="object-position: center 9%;" alt="HENM" loading="lazy">
+          </div>
+        </figure>
+      </div>
+
+      <div class="ivory-card reveal stagger-2">
+        <p>Officer commissioning academy of the Mexican Navy. A military higher education institution (university) developing leaders under a strict boarding regime.</p>
+      </div>
+
+      <div class="funnel-container reveal stagger-3">
+        <h3>Selection Funnel</h3>
+        <div class="kpi-grid">
+          <div class="kpi-item reveal stagger-1">
+            <span class="label">Annual applicants</span>
+            <span class="val">~8,000</span>
+            <span class="sub">applicants nationwide.</span>
+          </div>
+          <div class="kpi-item reveal stagger-2">
+            <span class="label">Admitted cadets</span>
+            <span class="val">300</span>
+            <span class="sub">enter the academy (acceptance rate: <strong>3.75%</strong>).</span>
+          </div>
+          <div class="kpi-item reveal stagger-3">
+            <span class="label">Graduates after 5 years</span>
+            <span class="val">148</span>
+            <span class="sub">graduate (completion rate: <strong>49.3%</strong> relative to intake).</span>
+          </div>
+          <div class="kpi-item highlight reveal stagger-4">
+            <span class="label">Cumulative graduation probability</span>
+            <span class="val">1.85%</span>
+            <span class="sub">of total applicants. Fewer than 2 out of 100 complete the program.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-2-col reveal stagger-4">
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_HENM_3]">
+            <img src="https://lh3.googleusercontent.com/d/1XrB6zbYyUNlvHSKgV23pS2eHouvxrnHd" alt="H" loading="lazy">
+          </div>
+        </figure>
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_HENM_4]">
+            <img src="https://lh3.googleusercontent.com/d/1Cvn2tDy6VUGumoRAjs6X8M-PLQH1fNHC" style="object-position: center 33%;" alt="H" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section id="section-2" class="reveal">
+      <h2>2. What I Learned in Hydrographic Engineering</h2>
+      
+      <div class="grid-2-col">
+        <!-- Columna A -->
+        <div class="ivory-card reveal stagger-1" style="margin-bottom: 0;">
+          <h3>A. Hydrographic Engineering</h3>
+          <ul>
+            <li>Loading, cleaning, and modeling geospatial data.</li>
+            <li>Spatial positioning using coordinates (Orientation).</li>
+            <li>Acoustic bathymetry: 3D seabed modeling.</li>
+          </ul>
+          <figure style="margin-top: 2rem; margin-bottom: 0;">
+            <div class="img-placeholder" data-label="[FOTO_HIDRO_1]">
+              <img src="https://lh3.googleusercontent.com/d/1VWplhViX_PQZWJVkhW30WngWK16S9GSD" alt="H" loading="lazy">
+            </div>
+          </figure>
+        </div>
+
+        <!-- Columna B -->
+        <div class="ivory-card reveal stagger-2" style="margin-bottom: 0;">
+          <h3>B. Marine Corps</h3>
+          <ul>
+            <li>Marksmanship and coordinated squad maneuvers.</li>
+            <li>Jungle survival and patrolling.</li>
+            <li>Navigation and forced marches under fatigue (15 km + 15 kg pack).</li>
+          </ul>
+          <figure style="margin-top: 2rem; margin-bottom: 0;">
+            <div class="img-placeholder" data-label="[FOTO_MILITAR_1]">
+              <img src="https://lh3.googleusercontent.com/d/1g2rhwye_RjqELFnLGPEImg_95aoKr8B4" style="object-position: center 29%;" alt="H" loading="lazy">
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-3" class="reveal">
+      <h2>3. Trajectory</h2>
+      
+      <blockquote class="institutional-quote reveal stagger-1">
+        “Character is not built; it is forged.”
+      </blockquote>
+
+      <div class="grid-2-col reveal stagger-2">
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_MILITAR_2]">
+            <img src="https://lh3.googleusercontent.com/d/1HqS_hYP16ycKoPoui9WDmeDGs6bRGZM6" alt="H" loading="lazy">
+          </div>
+        </figure>
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_MILITAR_3]">
+            <img src="https://lh3.googleusercontent.com/d/1ubyr2ISSxz7YRdnlBDSFbSTaBIVy2WFu" alt="H" loading="lazy">
+          </div>
+        </figure>
+      </div>
+
+      <div class="ivory-card reveal stagger-3" style="background: transparent; border: none; box-shadow: none; padding: 0;">
+        <p style="margin-bottom: 1.5rem; color: var(--text-ivory); font-size: 1.2rem;">After 5 years under a military routine that demands reaching your mental and physical limits to meet academic and physical standards without neglecting military duties, I learned that:</p>
+        
+        <ul class="principles-list">
+          <li class="reveal stagger-1">Suffering is a constant, not the exception.</li>
+          <li class="reveal stagger-2">The objective is achieved at all costs.</li>
+          <li class="reveal stagger-3">Cooperation is fundamental to accomplish the mission.</li>
+          <li class="reveal stagger-4">Success demands sacrifice.</li>
+        </ul>
+      </div>
+
+      <div class="carousel-snap reveal stagger-4" style="margin-top: 3.5rem;">
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_MILITAR_4]">
+            <img src="https://lh3.googleusercontent.com/d/1aCtVj2eWgqiL32QXK0CPBxCzjxE4zNU0" alt="H" loading="lazy">
+          </div>
+        </figure>
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_HENM_5]">
+            <img src="https://lh3.googleusercontent.com/d/1M2rW-nQXJ6X2QXCMzVmERJWLezBfYl1d" alt="H" loading="lazy">
+          </div>
+        </figure>
+        <figure>
+          <div class="img-placeholder" data-label="[FOTO_MILITAR_5]">
+            <img src="https://lh3.googleusercontent.com/d/187BRU7C6xb6q6A9b0xnU2LV6MjDdODs2" style="object-position: center 40%;" alt="H" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Intersection Observer for Scroll Animations
+      const revealElements = document.querySelectorAll('.reveal');
+      
+      const revealOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+      };
+
+      const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            return;
+          } else {
+            entry.target.classList.add('active');
+            // Optional: stop observing once revealed
+            // observer.unobserve(entry.target);
+          }
+        });
+      }, revealOptions);
+
+      revealElements.forEach(el => {
+        revealOnScroll.observe(el);
+      });
+
+      // Nota: El código responsable del efecto 3D ("Parallax effect on mousemove") ha sido eliminado exitosamente.
+      // El contenedor ahora se mantendrá siempre estático y elegante en 2D.
+    });
+  </script>
+</body>
+</html>
